@@ -1,4 +1,7 @@
-import { BDLClient } from "./clients/bdl-client";
+import { BDLClient } from "./clients/bdl.client";
+import { MainTopicList } from "./components/main-topics-list";
 
 const bdlClient = new BDLClient();
-await bdlClient.sendGet();
+// await bdlClient.getMainTopics();
+
+const mainTopicsList = new MainTopicList();
