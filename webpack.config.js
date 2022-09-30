@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -31,5 +32,12 @@ module.exports = {
   },
   experiments: {
     topLevelAwait: true
-  }
+  },
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        { from: './sw.js', to: './'}
+      ]
+    })
+  ]
 };

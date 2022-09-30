@@ -1,11 +1,9 @@
 export abstract class HttpClient {
-    public async sendGet(url: string, searchParams?: SearchParams) {
+    public async sendGet(url: string, options: HttpOptions) {
         try {
-            const response = await fetch(this.buildFullUrl(url, searchParams), {
+            const response = await fetch(this.buildFullUrl(url, options.searchParams), {
                 method: HttpMethod.GET,
-                headers: {
-                    Accept: 'application/json'
-                }
+                headers: options.headers
             });
 
             if (!response.ok) {
@@ -33,6 +31,11 @@ export abstract class HttpClient {
 
         return fullUrl;
     }
+}
+
+export interface HttpOptions {
+    searchParams?: SearchParams;
+    headers?: { [header: string] : string }
 }
 
 interface SearchParams {
