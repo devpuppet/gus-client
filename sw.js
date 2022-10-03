@@ -37,9 +37,9 @@ const cacheFirst = async (request, preloadResponsePromise, fallbackUrl) => {
 self.addEventListener("install", event => {
     event.waitUntil(
         addResourcesToCache([
-            // "./index.html",
-            // "./style.css",
-            // "./bundle.js"
+            "./index.html",
+            "./style.css",
+            "./sth_went_wrong_fallback.png"
         ])
     );
 });
