@@ -36,7 +36,7 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: './sw.js', to: './'}
+        { from: './sw.js', to: './' }
       ]
     })
   ]

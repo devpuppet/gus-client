@@ -1,7 +1,6 @@
 import { BDLClient } from "./clients/bdl.client";
 import { SDGClient } from "./clients/sdg.client";
 import { MainTopicList } from "./components/main-topics-list";
-// import { registerServiceWorker } from "./service-worker";
 
 export const registerServiceWorker = async () => {
     if ("serviceWorker" in navigator) {
@@ -22,11 +21,11 @@ export const registerServiceWorker = async () => {
     }
   };
 
-  registerServiceWorker();
+registerServiceWorker();
 
 const bdlClient = new BDLClient();
 const sdgClient = new SDGClient();
-// await bdlClient.getMainTopics();
+
 await sdgClient.getDomesticRatings();
 
 const mainTopicsList = new MainTopicList();

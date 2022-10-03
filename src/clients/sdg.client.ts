@@ -14,7 +14,6 @@ export class SDGClient extends HttpClient {
             }};
         const response = await this.sendGet(this.DOMESTIC_RATES, options);
 
-        console.log(response);
         return response;
     }
 }
