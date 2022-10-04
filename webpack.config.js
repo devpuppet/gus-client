@@ -38,12 +38,9 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: './sw.js', to: './' },
-        { from: './style.css', to: './' },
+        { from: './index.html', to: './' },
         { from: './fallback-responses/subjects.json', to: './fallback-responses' }
       ]
-    }),
-    new HtmlWebpackPlugin({
-      template: './index.html'
     })
   ]
 };
