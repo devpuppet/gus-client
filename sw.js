@@ -91,7 +91,7 @@ self.addEventListener("install", event => {
         addResourcesToCache([
             "./index.html",
             "./style.css",
-            "./sth_went_wrong_fallback.png"
+            "./fallback-responses/subjects.json"
         ])
     );
 });
@@ -101,6 +101,17 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(cacheFirst({
         request: event.request,
         preloadResponsePromise: event.preloadResponse,
-        fallbackUrl: "./sth_went_wrong_fallback.png"
+        fallbackUrl: defineFallbackResponse(event)
     }));
 });
+
+function defineFallbackResponse(event) {
+    let fallbackUrl;
+    const url = event.request.url;
+
+    if (url.includes('api/v1/subjects')) {
+        fallbackUrl = "./fallback-responses/subjects.json";
+    }
+
+    return fallbackUrl;
+}

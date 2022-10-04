@@ -39,7 +39,7 @@ module.exports = {
       patterns: [
         { from: './sw.js', to: './' },
         { from: './style.css', to: './' },
-        { from: './sth_went_wrong_fallback.png', to: './' }
+        { from: './fallback-responses/subjects.json', to: './fallback-responses' }
       ]
     }),
     new HtmlWebpackPlugin({
