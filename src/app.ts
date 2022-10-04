@@ -26,6 +26,7 @@ registerServiceWorker();
 const bdlClient = new BDLClient();
 const sdgClient = new SDGClient();
 
-await sdgClient.getDomesticRatings();
+const response = await sdgClient.getDomesticRatings();
+console.log(response);
 
 const mainTopicsList = new MainTopicList();
