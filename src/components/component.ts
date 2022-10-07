@@ -4,9 +4,10 @@ export abstract class Component<H extends HTMLElement, E extends HTMLElement> {
     protected readonly element: E;
     protected readonly id?: string;
     
-    constructor(templateId: string, hostId: string, elementId?: string) {
+    constructor(templateId: string, host: string | H, elementId?: string) {
         this.template = document.getElementById(templateId) as HTMLTemplateElement;
-        this.host = document.getElementById(hostId) as H;
+
+        this.host = typeof host === 'string' ? document.getElementById(host) as H : host;
 
         const node = document.importNode(this.template.content, true);
         this.element = node.firstElementChild as E;
