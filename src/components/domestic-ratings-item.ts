@@ -1,4 +1,5 @@
 import { DomesticRatingDto } from "../dto/sdg.model";
+import { DomesticRatingModel } from "../models/sdg.model";
 import { Component } from "./component";
 
 export class RatingsItem extends Component<HTMLUListElement, HTMLLIElement> {
@@ -15,17 +16,8 @@ export class RatingsItem extends Component<HTMLUListElement, HTMLLIElement> {
     configure(): void {}
 
     renderContent(): void {
-        const subRatings = Object.keys(this.rating).map(key => key);
-        subRatings.forEach(subRating => {
-            this.rating[subRating].forEach(code => {
-                const codes = Object.keys(code).map(key => key);
-                codes.forEach(x => {
-                    code[x].forEach(name => {
-                        new SubRatingItem(this.element, name.nazwa);
-                    });
-                })
-            });
-        });
+        const domesticRatingModel = new DomesticRatingModel(this.rating);
+        domesticRatingModel.getAllNames().forEach(name => new SubRatingItem(this.element, name));
     }
 }
 
