@@ -5,8 +5,8 @@ import { Component } from "./component";
 export class RatingsItem extends Component<HTMLUListElement, HTMLLIElement> {
     private readonly rating: DomesticRatingDto;
 
-    constructor(hostId: string, rating: DomesticRatingDto) {
-        super('ratings-item', hostId);
+    constructor(host: HTMLUListElement, rating: DomesticRatingDto) {
+        super('ratings-item', host);
         this.rating = rating;
 
         this.configure();

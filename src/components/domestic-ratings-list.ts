@@ -5,10 +5,9 @@ import { RatingsItem } from "./domestic-ratings-item";
 
 export class DomesticRatingsList extends Component<HTMLDivElement, HTMLUListElement> {
     private domesticRatingsDto$: Promise<DomesticRatingsDto>;
-    private domesticRatingsListId = 'ratings-list';
 
     constructor(sdgClient: SDGClient) {
-        super('ratings', 'app', 'ratings-section');
+        super('ratings', document.getElementById('app') as HTMLDivElement, 'ratings-section');
 
         this.domesticRatingsDto$ = sdgClient.getDomesticRatings();
         this.configure();
@@ -25,7 +24,7 @@ export class DomesticRatingsList extends Component<HTMLDivElement, HTMLUListElem
     private async renderDomesticRatings() {
         const domesticRatingsDto = await this.domesticRatingsDto$;
         for (const rating of domesticRatingsDto.krajowe) {
-            new RatingsItem(this.domesticRatingsListId, rating);
+            new RatingsItem(this.element, rating);
         }
     }
 }
