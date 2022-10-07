@@ -5,9 +5,10 @@ import { TopicItem } from "./main-topic-item";
 
 export class MainTopicList extends Component<HTMLDivElement, HTMLUListElement> {
     private mainTopicsDto$: Promise<MainTopicsDto>;
+    private mainTopicsListId = 'main-topics-list';
 
     constructor(bdlClient: BDLClient) {
-        super('main-topics', 'app', 'main-topics-list');
+        super('main-topics', 'app', 'main-topics-section');
 
         this.mainTopicsDto$ = bdlClient.getMainTopics();
         this.configure();
@@ -24,7 +25,7 @@ export class MainTopicList extends Component<HTMLDivElement, HTMLUListElement> {
     private async renderMainTopics() {
         const mainTopicsDto = await this.mainTopicsDto$;
         for (const result of mainTopicsDto.results) {
-            new TopicItem(this.id!, result);
+            new TopicItem(this.mainTopicsListId, result);
         }
     }
 }

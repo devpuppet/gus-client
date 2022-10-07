@@ -15,7 +15,7 @@ export class TopicItem extends Component<HTMLUListElement, HTMLLIElement> {
     configure(): void {}
 
     renderContent(): void {
-        this.element.querySelector('p')!.textContent = this.topic.name;
+        this.element.textContent = this.topic.name;
     }
 
 }
