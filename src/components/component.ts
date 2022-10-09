@@ -21,6 +21,10 @@ export abstract class Component<H extends HTMLElement, E extends HTMLElement> {
         this.host.insertAdjacentElement('beforeend', this.element);
     }
 
+    public getInnerHtml() {
+        return this.element.innerHTML;
+    }
+
     abstract configure(): void;
     abstract renderContent(): void;
 }

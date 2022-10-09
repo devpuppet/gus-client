@@ -31,3 +31,11 @@ h2 {
 li {
     text-align: left;
 }
+
+.collapseable ul { 
+    display: none;
+}
+
+.collapseable ul.show {
+    display: block;
+}

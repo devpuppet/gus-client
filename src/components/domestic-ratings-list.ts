@@ -1,5 +1,6 @@
 import { SDGClient } from "../clients/sdg.client";
-import { DomesticRatingsDto } from "../dto/sdg.model";
+import { DomesticRatingDto, DomesticRatingsDto } from "../dto/sdg.model";
+import { CollapsableList } from "./collapsable-list";
 import { Component } from "./component";
 import { RatingsItem } from "./domestic-ratings-item";
 
@@ -23,8 +24,17 @@ export class DomesticRatingsList extends Component<HTMLDivElement, HTMLUListElem
 
     private async renderDomesticRatings() {
         const domesticRatingsDto = await this.domesticRatingsDto$;
-        for (const rating of domesticRatingsDto.krajowe) {
-            new RatingsItem(this.element, rating);
+        for (let i = 0; i < domesticRatingsDto.krajowe.length; i++) {
+            new RatingsSection(this.element, `SECTION ${i + 1}.`, domesticRatingsDto.krajowe[i]);
         }
+    }
+}
+
+export class RatingsSection extends CollapsableList {
+
+    constructor(host: HTMLElement, title: string, ratingDto: DomesticRatingDto) {
+        super(host);
+        this.setTitle(title);
+        this.setItemsList([new RatingsItem(this.collapsableList, ratingDto)]);
     }
 }

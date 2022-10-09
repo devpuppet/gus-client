@@ -16,7 +16,6 @@ export class BDLClient extends HttpClient {
         };
         const response = await this.sendGet(this.MAIN_TOPICS, options) as MainTopicsDto;
 
-        console.log(response);
         return response;
     }
 }
