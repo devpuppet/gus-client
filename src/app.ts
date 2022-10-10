@@ -1,5 +1,4 @@
-import { SDGClient } from "./clients/sdg.client";
-import { DomesticRatingsList } from "./components/domestic-ratings-list";
+import { Router } from "./routing/router";
 
 export const registerServiceWorker = async () => {
     if ("serviceWorker" in navigator) {
@@ -22,6 +21,4 @@ export const registerServiceWorker = async () => {
 
 registerServiceWorker();
 
-const sdgClient = new SDGClient();
-
-const mainTopicsList = new DomesticRatingsList(sdgClient);
+new Router();
