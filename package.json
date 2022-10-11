@@ -1,5 +1,5 @@
 {
-  "name": "gus-app",
+  "name": "gus-client",
   "version": "1.0.0",
   "description": "Simple application to integrate with GUS API",
   "main": "index.js",
